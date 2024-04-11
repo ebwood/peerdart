@@ -15,8 +15,8 @@ class API {
 
   Future<Response> _buildRequest(String method) async {
     final url = _buildUrl(method);
-
-    return await http.get(url);
+    // add authorization header to verify token
+    return await http.get(url, headers: _options.getIdHeaders);
   }
 
   Future<String> retrieveId() async {

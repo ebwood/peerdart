@@ -13,6 +13,8 @@ class PeerOptions {
   String? key;
   String? token;
   Map<String, dynamic>? config;
+  // add authorization header to verify token
+  Map<String, String>? getIdHeaders;
   bool secure = true;
   int? pingInterval;
 
@@ -24,6 +26,7 @@ class PeerOptions {
     this.path = '/',
     this.key = PeerConfig.DEFAULT_KEY,
     this.token,
+    this.getIdHeaders,
     this.config = PeerConfig.defaultConfig,
     this.secure = true,
     this.pingInterval,
@@ -38,6 +41,7 @@ class PeerOptions {
       path: options.path ?? path,
       key: options.key ?? key,
       token: options.token ?? token,
+      getIdHeaders: options.getIdHeaders ?? getIdHeaders,
       secure: options.secure,
       pingInterval: options.pingInterval ?? pingInterval,
       logFunction: options.logFunction ?? logFunction,
